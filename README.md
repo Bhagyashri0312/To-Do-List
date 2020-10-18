@@ -15,7 +15,7 @@ The user can also quit and save the current task to file, and then restart the a
 
 # The project uses Gradle
 
-Gradle can be thought of as goodness of Maven put together minus the noise of XML. And scriptability with groovy is very big plus.
+Gradle can be thought of as goodness of Maven and Ant put together minus the noise of XML. And scriptability with groovy is very big plus.
 ▪ Gradle gives you conventions but still gives you power to override them easily.
 ▪ Gradle build files are less verbose as they are written in groovy.
 ▪ It provides very nice DSL(Domain-specific language) for writing build tasks.
