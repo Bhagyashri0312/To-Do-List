@@ -38,7 +38,7 @@ If you want to edit the Date field, Choose the date Greater than or Equal to tod
 
  # Delete Task 
 
-Choose the option 4 if the task has to be deleted. It will ask for the corresponding Task No. that has to be deleted.
+Choose the option 4, if the task has to be deleted. It will ask for the corresponding Task No. that has to be deleted.
 ￼
 
 # Save and Exit 
