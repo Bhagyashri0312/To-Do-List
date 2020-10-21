@@ -28,7 +28,7 @@ public class ToDoList {
 
 
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
-        System.out.println(String.format("  %55s", "                To do List          "));
+        System.out.println(String.format("  %55s", "                ToDo List          "));
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
         System.out.println(String.format("%25s", "      1- Display List      "));
         System.out.println(String.format("%25s", "      2- Add New Task      "));
@@ -36,7 +36,7 @@ public class ToDoList {
         System.out.println(String.format("%25s", "      4- Delete Task       "));
         System.out.println(String.format("%25s", "      5- Save & Exit       "));
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
-        System.out.println(" Enter correct option");
+        System.out.println(" Enter the option");
         option = scanInput();
 
         while (!(setExit)) {
@@ -103,7 +103,7 @@ public class ToDoList {
         inputText2 = scanString();
         System.out.println("Enter the Task name:  ");
         inputText3 = scanString();
-        System.out.println("Enter the Status(open or close):  ");
+        System.out.println("Enter the Status(Open or Close):  ");
         inputText4 = scanString();
 
         try {
@@ -146,8 +146,10 @@ public class ToDoList {
             } catch (IOException f) {
                 System.out.println("Error occurred while trying to edit ProjectName");
             }
-            System.out.println("Enter the option");
-            option = scanInput();
+
+                System.out.println("Enter the option");
+                option = scanInput();
+
         }
 
         if (option == 2) {
@@ -160,8 +162,9 @@ public class ToDoList {
                 System.out.println("Error occurred while trying to edit Date");
             }
 
-            System.out.println("Enter the option");
-            option = scanInput();
+
+                System.out.println("Enter the option");
+                option = scanInput();
         }
 
         if (option == 3) {
@@ -174,10 +177,10 @@ public class ToDoList {
 
                 System.out.println("Error occurred while trying to edit Task Name");
             }
-            System.out.println("Enter the option");
-            option = scanInput();
+                System.out.println("Enter the option");
+                option = scanInput();
+            }
 
-        }
 
 
         if(option ==4) {
@@ -189,9 +192,10 @@ public class ToDoList {
         } catch (IOException g) {
             System.out.println("Error occurred while trying to edit Status");
         }
-        System.out.println("Enter the option");
-        option = scanInput();
-    }
+
+                System.out.println("Enter the option");
+                option = scanInput();
+            }
 
 }
 
@@ -199,7 +203,8 @@ public class ToDoList {
      *  delete task
      */
     private void deleteTask() {
-        System.out.println("Enter the Task No you want  to delete ");
+        demo.showInput();
+        System.out.println("Enter the Task No. to be deleted ");
         taskNo = scanInput();
         taskNo = taskNo - 1;
         try {
@@ -207,8 +212,11 @@ public class ToDoList {
         } catch (IOException g) {
             System.out.println(" Problem occurred when trying to delete a record");
         }
-        System.out.println("Enter the option");
-        option = scanInput();
+
+            System.out.println("Enter the option");
+            option = scanInput();
+
+
     }
 
     /*
@@ -218,7 +226,7 @@ public class ToDoList {
         try {
             demo.fileWriter();
         } catch (IOException e) {
-            System.out.println("Raised during when trying to write into the file");
+            System.out.println("Raised when trying to write into the file");
         }
         setExit = true;
     }

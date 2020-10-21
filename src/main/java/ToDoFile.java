@@ -43,7 +43,7 @@ public class ToDoFile {
             task.sort((Task t1, Task t2) -> t1.getProjectName().compareTo(t2.getProjectName()));
         }
 
-        String format1 = "%-15s %-38s %-33s %-38s %-15s";
+        String format1 = "%-15s %-25s %-33s %-30s %-15s";
         System.out.println(String.format(format1, "Task Number", " Project Name", "Date", "Task Name", "Status"));
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------");
 
@@ -62,8 +62,6 @@ public class ToDoFile {
         System.out.println("Number of tasks closed: " + statusClosed);
         statusOpen = 0;
         statusClosed = 0;
-
-
     }
 
     public void fileReader() throws FileNotFoundException {
@@ -97,7 +95,6 @@ public class ToDoFile {
 
 
     }
-
     public void fileWriter() throws IOException {
 
         try {
