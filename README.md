@@ -37,6 +37,4 @@ Also Tested the Sorting functionality to check whether the List is sorted based 
 
 # Milestone
 
-▪ To save the date without displaying timezone. 
-
 ▪ To give the input file path dynamically by the user. 
