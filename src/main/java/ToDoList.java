@@ -1,5 +1,5 @@
 
-/***
+/**
  * Gives option to the user the Action to be performed on Todo List.
  */
 
@@ -16,7 +16,6 @@ public class ToDoList {
     private int option, taskNo;
     private boolean setExit = false;
     private String inputText1, inputText2, inputText3, inputText4;
-    private int changeField;
     private ToDoFile demo;
     private Date date;
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -28,13 +27,13 @@ public class ToDoList {
 
 
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
-        System.out.println(String.format("  %55s", "                ToDo List          "));
+        System.out.printf("  %55s%n", "                ToDo List          ");
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
-        System.out.println(String.format("%25s", "      1- Display List      "));
-        System.out.println(String.format("%25s", "      2- Add New Task      "));
-        System.out.println(String.format("%25s", "      3- Edit Task         "));
-        System.out.println(String.format("%25s", "      4- Delete Task       "));
-        System.out.println(String.format("%25s", "      5- Save & Exit       "));
+        System.out.printf("%25s%n", "      1- Display List      ");
+        System.out.printf("%25s%n", "      2- Add New Task      ");
+        System.out.printf("%25s%n", "      3- Edit Task         ");
+        System.out.printf("%25s%n", "      4- Delete Task       ");
+        System.out.printf("%25s%n", "      5- Save & Exit       ");
         System.out.println("---------------------------------------------------------------------------------------------------------------------");
         System.out.println(" Enter the option");
         option = scanInput();
@@ -79,8 +78,7 @@ public class ToDoList {
 
     public int scanInput() {
         Scanner sc = new Scanner(System.in);
-        int i = sc.nextInt();
-        return i;
+        return sc.nextInt();
     }
 
     /*
@@ -88,8 +86,7 @@ public class ToDoList {
      */
     public String scanString() {
         Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        return line;
+        return sc.nextLine();
     }
 
     /*
@@ -103,7 +100,7 @@ public class ToDoList {
         inputText2 = scanString();
         System.out.println("Enter the Task name:  ");
         inputText3 = scanString();
-        System.out.println("Enter the Status(Open or Close):  ");
+        System.out.println("Enter the Status(Open or Closed):  ");
         inputText4 = scanString();
 
         try {
@@ -136,6 +133,7 @@ public class ToDoList {
         System.out.println("4.Status");
         option = scanInput();
 
+        int changeField;
         if (option == 1) {
             System.out.println("Edit the Project Name : ");
             inputText1 = scanString();
@@ -185,7 +183,7 @@ public class ToDoList {
 
         if(option ==4) {
         System.out.println("Edit the status : ");
-        inputText3 = scanString();
+        inputText4 = scanString();
         changeField = 4;
         try {
             demo.editRecord(taskNo, inputText4, changeField);

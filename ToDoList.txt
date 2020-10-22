@@ -1,2 +1,3 @@
-SDA ; 2020-00-23 ; Individual Project ; Open
-Home ; 2020-00-28 ; Laundry ; Open
+Personal ; 2020-10-22 ; Laundry ; null
+SDA ; 2020-10-23 ; Washing ; Open
+Home ; 2020-10-28 ; Cleaning ; Open

@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -17,14 +18,10 @@ import java.util.Scanner;
 public class ToDoFile {
     static String fileName = "ToDoList.txt";
     static Scanner input = new Scanner(System.in);
-    private ArrayList<Task> task = new ArrayList<Task>();
-    private int option;
-    private int task_num;
+    private final ArrayList<Task> task = new ArrayList<>();
     private int statusOpen = 0;
     private int statusClosed = 0;
-    private boolean setExit = false;
-    private String inputText1, inputText3, inputText4;
-    DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+    DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
 
     /* Display the ToDo list data from arraylist*/
@@ -38,19 +35,19 @@ public class ToDoFile {
         System.out.println("2. Sort based on Project Name");
         choice = input.nextInt();
         if (choice == 1) {
-            task.sort((Task t1, Task t2) -> t1.getTaskDate().compareTo(t2.getTaskDate()));
+            task.sort(Comparator.comparing(Task::getTaskDate));
         } else if (choice == 2) {
-            task.sort((Task t1, Task t2) -> t1.getProjectName().compareTo(t2.getProjectName()));
+            task.sort(Comparator.comparing(Task::getProjectName));
         }
 
-        String format1 = "%-15s %-25s %-33s %-30s %-15s";
-        System.out.println(String.format(format1, "Task Number", " Project Name", "Date", "Task Name", "Status"));
+        String format1 = "%-15s %-38s %-33s %-38s %-15s";
+        System.out.printf((format1) + "%n", "Task Number", " Project Name", "Date", "Task Name", "Status");
         System.out.println("--------------------------------------------------------------------------------------------------------------------------------------------");
 
         for (Task file : task) {
             counter = counter + 1;
 
-            System.out.println(String.format(format1, counter, file.getProjectName(), file.getTaskDate(), file.getTaskName(), file.getStatus()));
+            System.out.printf((format1) + "%n", counter, file.getProjectName(), file.getTaskDate(), file.getTaskName(), file.getStatus());
             String changeCase = file.getStatus();
             if (changeCase.equals("Open")) {
                 statusOpen = statusOpen + 1;
@@ -62,6 +59,8 @@ public class ToDoFile {
         System.out.println("Number of tasks closed: " + statusClosed);
         statusOpen = 0;
         statusClosed = 0;
+
+
     }
 
     public void fileReader() throws FileNotFoundException {
@@ -71,8 +70,7 @@ public class ToDoFile {
         String str;
         try {
             while ((str = inFile.readLine()) != null) {
-                String str1 = str.toString();
-                String[] arr = str1.split(" ; ");
+                String[] arr = str.split(" ; ");
                 try
                 {
                     date = format.parse(arr[1]);
@@ -95,11 +93,11 @@ public class ToDoFile {
 
 
     }
+
     public void fileWriter() throws IOException {
 
         try {
 
-            //Scanner input = new Scanner(System.in);
             PrintWriter outFile = new PrintWriter(new FileWriter(fileName));
 
             for (Task out : task) {
@@ -124,10 +122,10 @@ public class ToDoFile {
         //* Get the current date. Consider only the Date portion for comparison
 
         Date today = new Date();
-        Date todayWithZeroTime = format.parse(format.format(today));
-        Date inputDateWithZeroTime = format.parse(format.format(taskDate));
+        Date todayDate = format.parse(format.format(today));
+        Date inputDate = format.parse(format.format(taskDate));
 
-        if (inputDateWithZeroTime.compareTo(todayWithZeroTime) < 0) {
+        if (inputDate.compareTo(todayDate) < 0) {
             System.out.println("Date Entered should be greater than today");
         } else {
             task.add(new Task(projectName, taskDate, taskName, status));
@@ -156,10 +154,10 @@ public class ToDoFile {
             // Get the current date. Consider only the Date portion for comparison
 
             Date today = new Date();
-            Date todayWithZeroTime = format.parse(format.format(today));
-            Date inputDateWithZeroTime = format.parse(format.format(date));
+            Date todayDate = format.parse(format.format(today));
+            Date inputDate = format.parse(format.format(date));
 
-            if (inputDateWithZeroTime.compareTo(todayWithZeroTime) < 0) {
+            if (inputDate.compareTo(todayDate) < 0) {
                 System.out.println("Date Entered should be greater than today");
             } else {
                 task.set(editIndex, new Task(task.get(editIndex).getProjectName(), date, task.get(editIndex).getTaskName(), task.get(editIndex).getStatus()));

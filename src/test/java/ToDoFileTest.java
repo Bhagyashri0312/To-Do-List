@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 
 import org.junit.jupiter.api.AfterEach;
@@ -13,7 +14,7 @@ import org.junit.jupiter.api.Test;
 
 class ToDoFileTest {
 
-    ArrayList<Task> inp = new ArrayList<>();
+    ArrayList<Task> inp = new ArrayList<Task>();
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
     Date date, date1, date2;
     Task task;
@@ -131,7 +132,7 @@ class ToDoFileTest {
 
     void checkWhetherArrayListIsSorted() {
         ArrayList<Task> sorted = new ArrayList<>(inp);
-        sorted.sort((Task d1, Task d2) -> d1.getTaskDate().compareTo(d2.getTaskDate()));
+        sorted.sort(Comparator.comparing(Task::getTaskDate));
         assertEquals(sorted.get(0).getTaskDate(), inp.get(0).getTaskDate());
     }
 
